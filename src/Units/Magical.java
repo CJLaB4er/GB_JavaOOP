@@ -1,6 +1,6 @@
 package Units;
 
-public class Magical extends BaseUnit{
+public abstract class Magical extends BaseUnit{
     protected int mana, maxMana;
 
     public Magical(int hp, int maxHp, int deff, int evasion, int speed, int accuracy, String name, int mana, int maxMana) {
@@ -10,4 +10,5 @@ public class Magical extends BaseUnit{
     }
 
     public void heal(){} // лечить
+
 }

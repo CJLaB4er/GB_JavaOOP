@@ -1,8 +1,8 @@
 package Units;
 
-public class BaseUnit {
-     protected int hp, maxHp, deff, evasion, speed, accuracy;
-     protected String name;
+public abstract class BaseUnit implements GameInterface {
+    protected int hp, maxHp, deff, evasion, speed, accuracy;
+    protected String name;
 
     public BaseUnit(int hp, int maxHp, int deff, int evasion, int speed, int accuracy, String name) {
         this.hp = hp;
@@ -13,11 +13,17 @@ public class BaseUnit {
         this.accuracy = accuracy;
         this.name = name;
     }
-    public void move(){} // движение персонажа
 
-    public void attack(){} // атака
+    public void move() {
+    } // движение персонажа
 
-    public void defend(){} // защищаться
+    public void attack() {
+    } // атака
 
-    public void skip(){} // пропустить ход
+    public void defend() {
+    } // защищаться
+
+    public void skip() {
+    } // пропустить ход
+
 }

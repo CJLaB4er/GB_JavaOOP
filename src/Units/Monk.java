@@ -12,4 +12,15 @@ public class Monk extends Magical {
 
     public void resurrect() {
     } // воскресить
+
+    @Override
+    public void step() {
+
+    }
+
+    @Override
+    public String getInfo() {
+        return "Class: Monk, name: " + name + ", maxHP: " + maxHp + ", deff: " + deff + ", evansion: " + evasion
+                + " speed: " + speed + ", accuracy: " + accuracy + ", maxMana: " + maxMana;
+    }
 }

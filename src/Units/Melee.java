@@ -1,6 +1,6 @@
 package Units;
 
-public class Melee extends BaseUnit {
+public abstract class Melee extends BaseUnit {
     protected int bravery; // храбрость
     protected int endurance; // выносливость
 

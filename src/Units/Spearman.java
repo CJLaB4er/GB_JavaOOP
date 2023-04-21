@@ -10,4 +10,16 @@ public class Spearman extends Melee{
     }
 
     public void specialAttakk(){} // специальная атака
+
+    @Override
+    public void step() {
+
+    }
+
+    @Override
+    public String getInfo() {
+        return "Class: Spearman, name: " + name + ", maxHP: " + maxHp + ", deff: " + deff + ", evansion: " + evasion
+                + " speed: " + speed + ", accuracy: " + accuracy + ", bravery: "
+                + bravery + ", endurance: " + endurance;
+    }
 }

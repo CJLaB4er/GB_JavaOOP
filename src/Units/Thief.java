@@ -10,4 +10,16 @@ public class Thief extends Melee{
     }
 
     public void hide(){} // спрятаться
+
+    @Override
+    public void step() {
+
+    }
+
+    @Override
+    public String getInfo() {
+        return "Class: Thief, name: " + name + ", maxHP: " + maxHp + ", deff: " + deff + ", evansion: " + evasion
+                + " speed: " + speed + ", accuracy: " + accuracy + ", bravery: "
+                + bravery + ", endurance: " + endurance;
+    }
 }
