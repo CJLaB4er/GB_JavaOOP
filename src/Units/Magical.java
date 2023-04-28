@@ -6,8 +6,9 @@ import java.util.Random;
 public abstract class Magical extends BaseUnit {
     protected int mana, maxMana;
 
-    public Magical(ArrayList<BaseUnit> team, int hp, int maxHp, int deff, int evasion, int speed, int accuracy, String name, int[] damage, int mana, int maxMana) {
-        super(team, hp, maxHp, deff, evasion, speed, accuracy, name, damage);
+    public Magical(ArrayList<BaseUnit> team, int hp, int maxHp, int deff, int evasion, int speed,
+                   int accuracy, String name, int[] damage, int initiative, int mana, int maxMana) {
+        super(team, hp, maxHp, deff, evasion, speed, accuracy, name, damage, initiative);
         this.mana = mana;
         this.maxMana = maxMana;
     }

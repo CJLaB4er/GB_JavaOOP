@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class BaseUnit implements GameInterface {
-    protected int hp, maxHp, deff, evasion, speed, accuracy;
+    protected int hp, maxHp, deff, evasion, speed, accuracy, initiative;
     protected String name;
     int[] damage;
     protected ArrayList<BaseUnit> team;
 
-    public BaseUnit(ArrayList<BaseUnit> team, int hp, int maxHp, int deff, int evasion, int speed, int accuracy, String name, int[] damage) {
+    public BaseUnit(ArrayList<BaseUnit> team, int hp, int maxHp, int deff, int evasion, int speed, int accuracy,
+                    String name, int[] damage, int initiative) {
         this.team = team;
         this.hp = hp;
         this.maxHp = maxHp;
@@ -20,6 +21,7 @@ public abstract class BaseUnit implements GameInterface {
         this.accuracy = accuracy;
         this.name = name;
         this.damage = damage;
+        this.initiative = initiative;
     }
 
     protected void move() {
@@ -38,6 +40,6 @@ public abstract class BaseUnit implements GameInterface {
 
     @Override
     public String getInfo() {
-        return "Name: " + this.name + ", MaxHp: " + this.maxHp + ", Hp: " + this.hp;
+        return "Name: " + this.name + ", MaxHp: " + this.maxHp + ", Hp: " + this.hp + "Initiative: " + this.initiative;
     }
 }

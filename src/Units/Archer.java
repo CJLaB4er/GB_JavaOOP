@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Archer extends Shooter implements GameInterface {
     public Archer(ArrayList<BaseUnit> team, String name) {
-        super(team, 50, 50, 5, 20, 5, 10, name, new int[]{1, 2}, 5, 25);
+        super(team, 50, 50, 5, 20, 5, 10, name, new int[]{1, 2}, 1,
+                5, 25);
     }
-//    super(50, 50, 5, 20, 5, 10, name, 5, 25);
 
     @Override
     public String toString() {

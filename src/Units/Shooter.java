@@ -5,8 +5,9 @@ import java.util.ArrayList;
 public  abstract class Shooter extends BaseUnit implements GameInterface{
     protected int distance, ammunition;
 
-    public Shooter(ArrayList<BaseUnit> team, int hp, int maxHp, int deff, int evasion, int speed, int accuracy, String name, int[] damage, int distance, int ammunition) {
-        super(team, hp, maxHp, deff, evasion, speed, accuracy, name, damage);
+    public Shooter(ArrayList<BaseUnit> team, int hp, int maxHp, int deff, int evasion,
+                   int speed, int accuracy, String name, int[] damage, int initiative, int distance, int ammunition) {
+        super(team, hp, maxHp, deff, evasion, speed, accuracy, name, damage, initiative);
         this.distance = distance;
         this.ammunition = ammunition;
     }
