@@ -9,10 +9,4 @@ public class Mag extends Magical {
     }
     public void fireBall() {
     } // огненный шар
-
-//    @Override
-//    public String getInfo() {
-//        return "Class: Mag, name: " + name + ", maxHP: " + maxHp + ", HP: " + hp + ", deff: " + deff + ", evansion: " + evasion
-//                + " speed: " + speed + ", accuracy: " + accuracy + ", maxMana: " + maxMana;
-//    }
 }

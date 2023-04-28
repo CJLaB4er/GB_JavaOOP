@@ -71,8 +71,10 @@ public class Main {
         System.out.println("Вторая команда");
         team2.forEach(unit -> System.out.println(unit.getInfo()));
 
+
         team1.sort(BaseUnit::compareTo);
         System.out.println(team1);
+
     }
 
     private static String getName() {

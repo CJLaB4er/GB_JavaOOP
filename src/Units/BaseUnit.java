@@ -11,6 +11,7 @@ public abstract class BaseUnit implements GameInterface {
 
     public BaseUnit(ArrayList<BaseUnit> team, int hp, int maxHp, int deff, int evasion, int speed, int accuracy,
                     String name, int[] damage, int initiative) {
+
         this.team = team;
         this.hp = hp;
         this.maxHp = maxHp;

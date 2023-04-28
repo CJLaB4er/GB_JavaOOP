@@ -9,6 +9,7 @@ public abstract class Magical extends BaseUnit {
     public Magical(ArrayList<BaseUnit> team, int hp, int maxHp, int deff, int evasion, int speed,
                    int accuracy, String name, int[] damage, int initiative, int mana, int maxMana) {
         super(team, hp, maxHp, deff, evasion, speed, accuracy, name, damage, initiative);
+
         this.mana = mana;
         this.maxMana = maxMana;
     }
@@ -38,5 +39,6 @@ public abstract class Magical extends BaseUnit {
     @Override
     public String getInfo() {
         return "Class: " + this.getClass().getSimpleName() + ", " + super.getInfo();
+
     }
 }
