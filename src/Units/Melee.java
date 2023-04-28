@@ -17,6 +17,11 @@ public abstract class Melee extends BaseUnit {
 
     @Override
     public String getInfo() {
-        return "Class: " + this.getClass().getSimpleName() + " " + super.getInfo();
+        return "Class: " + this.getClass().getSimpleName() + ", " + super.getInfo();
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
     }
 }

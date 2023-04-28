@@ -40,6 +40,12 @@ public abstract class BaseUnit implements GameInterface {
 
     @Override
     public String getInfo() {
-        return "Name: " + this.name + ", MaxHp: " + this.maxHp + ", Hp: " + this.hp + "Initiative: " + this.initiative;
+        return "Name: " + this.name + ", MaxHp: " + this.maxHp + ", Hp: " + this.hp + ", Initiative: "
+                + this.initiative + ".";
+    }
+
+    public int compareTo(Object o){
+        BaseUnit unit = (BaseUnit)o;
+        return unit.initiative - this.initiative;
     }
 }

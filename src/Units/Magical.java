@@ -31,7 +31,12 @@ public abstract class Magical extends BaseUnit {
     }
 
     @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
+
+    @Override
     public String getInfo() {
-        return "Class: " + this.getClass().getSimpleName() + " " + super.getInfo();
+        return "Class: " + this.getClass().getSimpleName() + ", " + super.getInfo();
     }
 }

@@ -17,6 +17,10 @@ public  abstract class Shooter extends BaseUnit implements GameInterface{
 
     @Override
     public String getInfo() {
-        return "Class: " + this.getClass().getSimpleName() + " " + super.getInfo();
+        return "Class: " + this.getClass().getSimpleName() + ", " + super.getInfo();
+    }
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
     }
 }
