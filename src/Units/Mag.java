@@ -1,9 +1,13 @@
 package Units;
 
+import java.util.ArrayList;
+
 public class Mag extends Magical{
-    public Mag(String name) {
-        super(30, 30, 10, 2, 2, 10, name, 75, 75);
+    public Mag(ArrayList<BaseUnit> team, String name) {
+        super(team, 30, 30, 10, 2, 2, 10, name, new int[] {1,2}, 75, 75);
     }
+
+    //    super(30, 30, 10, 2, 2, 10, name, new int[]{1, 2}, 75, 75);
     @Override
     public String toString() {
         return "Class: Mag, name " + name;
@@ -12,14 +16,9 @@ public class Mag extends Magical{
     public void fireBall() {
     } // огненный шар
 
-    @Override
-    public void step() {
-
-    }
-
-    @Override
-    public String getInfo() {
-        return "Class: Mag, name: " + name + ", maxHP: " + maxHp + ", deff: " + deff + ", evansion: " + evasion
-                + " speed: " + speed + ", accuracy: " + accuracy + ", maxMana: " + maxMana;
-    }
+//    @Override
+//    public String getInfo() {
+//        return "Class: Mag, name: " + name + ", maxHP: " + maxHp + ", HP: " + hp + ", deff: " + deff + ", evansion: " + evasion
+//                + " speed: " + speed + ", accuracy: " + accuracy + ", maxMana: " + maxMana;
+//    }
 }
