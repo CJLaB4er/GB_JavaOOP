@@ -3,23 +3,11 @@ package Units;
 import java.util.ArrayList;
 
 public abstract class Melee extends BaseUnit {
-    protected int bravery; // храбрость
-    protected int endurance; // выносливость
-
-    public Melee(ArrayList<BaseUnit> team, int hp, int maxHp, int deff, int evasion, int speed, int accuracy,
-                 String name, int[] damage, int initiative, int x, int y, int bravery, int endurance) {
-        super(team, hp, maxHp, deff, evasion, speed, accuracy, name, damage, initiative, x, y);
-        this.bravery = bravery;
-        this.endurance = endurance;
+    public Melee(ArrayList<BaseUnit> team, int maxHp, String name, int[] damage, int initiative, int x, int y) {
+        super(team, maxHp, name, damage, initiative, x, y);
     }
-
     @Override
-    public String getInfo() {
-        return "Class: " + this.getClass().getSimpleName() + ", " + super.getInfo();
-    }
-
-    @Override
-    public String toString() {
-        return this.getClass().getSimpleName();
+    public void step(ArrayList<BaseUnit> enemys) {
+        System.out.println("Юнит ближнего боя пропускает свой ход");
     }
 }

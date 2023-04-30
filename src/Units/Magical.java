@@ -6,15 +6,12 @@ import java.util.Random;
 public abstract class Magical extends BaseUnit {
     protected int mana, maxMana;
 
-    public Magical(ArrayList<BaseUnit> team, int hp, int maxHp, int deff, int evasion, int speed, int accuracy,
-                   String name, int[] damage, int initiative, int x, int y, int mana, int maxMana) {
-        super(team, hp, maxHp, deff, evasion, speed, accuracy, name, damage, initiative, x, y);
-        this.mana = mana;
+    public Magical(ArrayList<BaseUnit> team, int maxHp, String name, int[] damage, int initiative,
+                   int x, int y, int maxMana) {
+        super(team, maxHp, name, damage, initiative, x, y);
+        this.mana = maxMana;
         this.maxMana = maxMana;
     }
-
-    public void heal() {
-    } // лечить
 
     @Override
     public void step(ArrayList enemys) {
@@ -26,18 +23,7 @@ public abstract class Magical extends BaseUnit {
                 }
             }
         }
-        team.get(index_min_hp).healed(new Random().nextInt(this.damage[0], this.damage[1]));
-        this.mana -= 5;
-    }
-
-    @Override
-    public String toString() {
-        return this.getClass().getSimpleName();
-    }
-
-    @Override
-    public String getInfo() {
-        return "Class: " + this.getClass().getSimpleName() + ", " + super.getInfo();
-
+//        team.get(index_min_hp).getDamage(new Random().nextInt(this.damage[0], this.damage[1]));
+        team.get(index_min_hp).getDamage(5);
     }
 }

@@ -4,43 +4,43 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class BaseUnit implements GameInterface {
-    protected int hp, maxHp, deff, evasion, speed, accuracy, initiative;
+    protected int hp, maxHp, initiative;
     protected String name;
     protected int[] damage;
     protected ArrayList<BaseUnit> team;
     protected Coord coord;
+    protected String status;
 
 
-
-    public BaseUnit(ArrayList<BaseUnit> team, int hp, int maxHp, int deff, int evasion, int speed, int accuracy,
-                    String name, int[] damage, int initiative, int x, int y) {
+    public BaseUnit(ArrayList<BaseUnit> team, int maxHp, String name, int[] damage, int initiative, int x, int y) {
 
         this.team = team;
-        this.hp = hp;
+        this.hp = maxHp;
         this.maxHp = maxHp;
         if (new Random().nextBoolean()) this.hp /= 2;
-        this.deff = deff;
-        this.evasion = evasion;
-        this.speed = speed;
-        this.accuracy = accuracy;
         this.name = name;
         this.damage = damage;
         this.initiative = initiative;
         this.coord = new Coord(x, y);
+        this.status = "ready"; //три возможных статуса: ready, busy, died
     }
 
-    protected void healed(int health) {
-        this.hp = health + this.hp > this.maxHp ? this.maxHp : health + this.hp;
-    } // принять лечение
+    protected void getDamage(int damage) {
+        if (this.hp - damage < 1) {
+            this.status = "died";
+            this.hp = 0;
+        }
+        this.hp = this.hp - damage > this.maxHp ? this.maxHp : this.hp - damage;
+
+    } // метод получения дамага/лечения
 
     @Override
     public String getInfo() {
-        return "Name: " + this.name + ", MaxHp: " + this.maxHp + ", Hp: " + this.hp + ", Initiative: "
-                + this.initiative + ".";
+        return this.getClass().getSimpleName() + " " + name;
     }
 
-    public int compareTo(Object o){
-        BaseUnit unit = (BaseUnit)o;
+    public int compareTo(Object o) {
+        BaseUnit unit = (BaseUnit) o;
         return unit.initiative - this.initiative;
     }
 }

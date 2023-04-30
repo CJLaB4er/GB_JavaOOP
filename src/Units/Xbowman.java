@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class Xbowman extends Shooter {
     public Xbowman(ArrayList<BaseUnit> team, String name, int x, int y) {
-        super(team, 70, 70, 10, 5, 3, 15, name, new int[]{1, 2},
-                3, x, y, 4, 15);
+        super(team, 25, name, new int[]{4, 8}, 6, x, y, 10);
     }
 }

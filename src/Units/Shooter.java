@@ -3,20 +3,18 @@ package Units;
 import java.util.ArrayList;
 
 public abstract class Shooter extends BaseUnit implements GameInterface {
-    protected int distance, ammunition;
+    protected int ammunition;
 
 
-    public Shooter(ArrayList<BaseUnit> team, int hp, int maxHp, int deff, int evasion, int speed, int accuracy,
-                   String name, int[] damage, int initiative, int x, int y, int distance, int ammunition) {
-        super(team, hp, maxHp, deff, evasion, speed, accuracy, name, damage, initiative, x, y);
-        this.distance = distance;
+    public Shooter(ArrayList<BaseUnit> team, int maxHp, String name, int[] damage,
+                   int initiative, int x, int y, int ammunition) {
+        super(team, maxHp, name, damage, initiative, x, y);
         this.ammunition = ammunition;
     }
 
     @Override
     public String getInfo() {
-
-        return "Class: " + this.getClass().getSimpleName() + ", " + super.getInfo();
+        return super.getInfo() + ", запас стрелл: " + ammunition;
     }
 
     @Override

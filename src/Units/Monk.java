@@ -4,11 +4,6 @@ import java.util.ArrayList;
 
 public class Monk extends Magical {
     public Monk(ArrayList<BaseUnit> team, String name, int x, int y) {
-
-        super(team, 30, 30, 5, 2, 2, 10, name, new int[]{5, 11},
-                1, 1, 1, 50, 50);
+        super(team, 15, name, new int[]{-2, -5}, 4, x, y, 10);
     }
-
-    public void resurrect() {
-    } // воскресить
 }
