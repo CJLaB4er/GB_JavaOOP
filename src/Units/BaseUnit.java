@@ -27,10 +27,11 @@ public abstract class BaseUnit implements GameInterface {
 
     protected void getDamage(int damage) {
         if (this.hp - damage < 1) {
-            this.status = "died";
+            this.status = "died"; // статус died означает, что юнит мёртв
             this.hp = 0;
+        } else {
+            this.hp = this.hp - damage > this.maxHp ? this.maxHp : this.hp - damage;
         }
-        else {this.hp = this.hp - damage > this.maxHp ? this.maxHp : this.hp - damage;}
 
     } // метод получения дамага/лечения
 
@@ -42,5 +43,13 @@ public abstract class BaseUnit implements GameInterface {
     public int compareTo(Object o) {
         BaseUnit unit = (BaseUnit) o;
         return unit.initiative - this.initiative;
+    }
+
+    @Override
+    public void step(ArrayList<BaseUnit> enemys) {
+        if (status.equals("died")) {
+            System.out.println(getClass().getSimpleName() + ": " + name + " мёртв.");
+            return;
+        }
     }
 }

@@ -23,8 +23,11 @@ public abstract class Magical extends BaseUnit {
                 }
             }
         }
-//        team.get(index_min_hp).getDamage(new Random().nextInt(this.damage[0], this.damage[1]));
-        team.get(index_min_hp).getDamage(5);
+        BaseUnit target = team.get(index_min_hp);
+        int damage = new Random().nextInt(this.damage[0], this.damage[1]);
+        target.getDamage(damage * -1);
+        System.out.println(getClass().getSimpleName() + ": " + name + " Лечит "
+                + target.getClass().getSimpleName() + ": " + target.name + " на " + damage + " единиц здоровья");
     }
 
     @Override

@@ -25,27 +25,30 @@ public abstract class Shooter extends BaseUnit implements GameInterface {
 
     @Override
     public void step(ArrayList<BaseUnit> enemys) {
-        BaseUnit target = null;
-        float minDist = Float.MAX_VALUE;
-        if (status.equals("died")) {
-            System.out.println("Персонаж мёртв");
-            return;
-        }
         if (ammunition < 1) {
             System.out.println("У персонажа закончились стрелы");
             return;
         }
+        if (enemys.size() < 1) {
+            return;
+        }
+        BaseUnit target = null;
+        float minDist = Float.MAX_VALUE;
         for (BaseUnit item : enemys) {
             float tmp = item.coord.getDistance(this.coord);
-            if (tmp < minDist) {
+            if (tmp < minDist && !item.status.equals("died")) {
                 minDist = tmp;
                 target = item;
             }
         }
+        if (target == null) {
+            return;
+        }
         int damage = new Random().nextInt(this.damage[0], this.damage[1]);
-        System.out.println(name + " Стреляет в " + target.name + " и наносит " + damage + " урона");
+        System.out.println(getClass().getSimpleName() + ": " + name + " Стреляет в "
+                + target.getClass().getSimpleName() + ": " + target.name + " и наносит " + damage + " урона");
         target.getDamage(damage);
-        ammunition -= 1;
+//        ammunition -= 1;
 
     }
 }

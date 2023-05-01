@@ -7,12 +7,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int teamSize = 5;
+        int teamSize = 3;
 
 
         ArrayList<BaseUnit> team1 = new ArrayList<>();
         for (int i = 0; i < teamSize; i++) {
-            switch (new Random().nextInt(6)) {
+            switch (new Random().nextInt(4)) {
                 case 0:
                     team1.add(new Archer(team1, getName(), 1, i + 1));
                     break;
@@ -35,7 +35,7 @@ public class Main {
         }
         ArrayList<BaseUnit> team2 = new ArrayList<>();
         for (int i = 0; i < teamSize; i++) {
-            switch (new Random().nextInt(6)) {
+            switch (new Random().nextInt(4)) {
                 case 0:
                     team2.add(new Archer(team2, getName(), 10, i + 1));
                     break;
@@ -57,19 +57,24 @@ public class Main {
             }
         }
 
-        System.out.println("Спиcок персонажей первой команды: ");
-        team1.forEach(unit -> System.out.println(unit.getInfo()));
-        System.out.println("Спиcок персонажей второй команды: ");
-        team2.forEach(unit -> System.out.println(unit.getInfo()));
+//        System.out.println("Спиcок персонажей первой команды: ");
+//        team1.forEach(unit -> System.out.println(unit.getInfo()));
+//        System.out.println("Спиcок персонажей второй команды: ");
+//        team2.forEach(unit -> System.out.println(unit.getInfo()));
 
-        team1.forEach(unit -> unit.step(team2));
-        team2.forEach(unit -> unit.step(team1));
+//        team1.forEach(unit -> unit.step(team2));
+//        team2.forEach(unit -> unit.step(team1));
 
-        System.out.println("----------");
-        System.out.println("Первая команда");
-        team1.forEach(unit -> System.out.println(unit.getInfo()));
-        System.out.println("Вторая команда");
-        team2.forEach(unit -> System.out.println(unit.getInfo()));
+//        System.out.println("----------");
+//        System.out.println("Первая команда");
+//        team1.forEach(unit -> System.out.println(unit.getInfo()));
+//        System.out.println("Вторая команда");
+//        team2.forEach(unit -> System.out.println(unit.getInfo()));
+
+        while (team1.size() > 0 && team2.size() > 0){
+            team1.forEach(unit -> unit.step(team2));
+            team2.forEach(unit -> unit.step(team1));
+        }
     }
 
     private static String getName() {
