@@ -9,7 +9,7 @@ public abstract class Melee extends BaseUnit {
 
     @Override
     public void step(ArrayList<BaseUnit> enemys) {
-        System.out.println("Юнит ближнего боя пропускает свой ход");
+//        System.out.println("Юнит ближнего боя пропускает свой ход");
     }
 
     @Override

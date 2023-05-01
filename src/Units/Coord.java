@@ -13,4 +13,5 @@ public class Coord {
         float dy = coord.y - this.y;
         return (float) Math.sqrt(dx * dx + dy * dy);
     }
+
 }

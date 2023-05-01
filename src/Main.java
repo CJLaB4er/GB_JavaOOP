@@ -1,77 +1,96 @@
 import Units.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+    static ArrayList<BaseUnit> darkTeam = new ArrayList<>();
+    static ArrayList<BaseUnit> holyTeam = new ArrayList<>();
+    static List<BaseUnit> allTeam = new ArrayList<>();
 
     public static void main(String[] args) {
 
-        int teamSize = 5;
+        int teamSize = 10;
+        int countChar = 7;
 
 
-        ArrayList<BaseUnit> team1 = new ArrayList<>();
         for (int i = 0; i < teamSize; i++) {
-            switch (new Random().nextInt(7)) {
+            switch (new Random().nextInt(countChar)) {
                 case 0:
-                    team1.add(new Archer(team1, getName(), 1, i + 1));
+                    darkTeam.add(new Archer(darkTeam, getName(), 1, i + 1));
                     break;
                 case 1:
-                    team1.add(new Xbowman(team1, getName(), 1, i + 1));
+                    darkTeam.add(new Xbowman(darkTeam, getName(), 1, i + 1));
                     break;
                 case 2:
-                    team1.add(new Mag(team1, getName(), 1, i + 1));
+                    darkTeam.add(new Mag(darkTeam, getName(), 1, i + 1));
                     break;
                 case 3:
-                    team1.add(new Monk(team1, getName(), 1, i + 1));
+                    darkTeam.add(new Monk(darkTeam, getName(), 1, i + 1));
                     break;
                 case 4:
-                    team1.add(new Spearman(team1, getName(), 1, i + 1));
+                    darkTeam.add(new Spearman(darkTeam, getName(), 1, i + 1));
                     break;
                 case 5:
-                    team1.add(new Thief(team1, getName(), 1, i + 1));
+                    darkTeam.add(new Thief(darkTeam, getName(), 1, i + 1));
                     break;
                 case 6:
-                    team1.add(new Peasant(team1, getName(), 1, i + 1));
+                    darkTeam.add(new Peasant(darkTeam, getName(), 1, i + 1));
                     break;
             }
         }
-        ArrayList<BaseUnit> team2 = new ArrayList<>();
         for (int i = 0; i < teamSize; i++) {
-            switch (new Random().nextInt(7)) {
+            switch (new Random().nextInt(countChar)) {
                 case 0:
-                    team2.add(new Archer(team2, getName(), 10, i + 1));
+                    holyTeam.add(new Archer(holyTeam, getName(), 10, i + 1));
                     break;
                 case 1:
-                    team2.add(new Xbowman(team2, getName(), 10, i + 1));
+                    holyTeam.add(new Xbowman(holyTeam, getName(), 10, i + 1));
                     break;
                 case 2:
-                    team2.add(new Mag(team2, getName(), 10, i + 1));
+                    holyTeam.add(new Mag(holyTeam, getName(), 10, i + 1));
                     break;
                 case 3:
-                    team2.add(new Monk(team2, getName(), 10, i + 1));
+                    holyTeam.add(new Monk(holyTeam, getName(), 10, i + 1));
                     break;
                 case 4:
-                    team2.add(new Spearman(team2, getName(), 10, i + 1));
+                    holyTeam.add(new Spearman(holyTeam, getName(), 10, i + 1));
                     break;
                 case 5:
-                    team2.add(new Thief(team2, getName(), 10, i + 1));
+                    holyTeam.add(new Thief(holyTeam, getName(), 10, i + 1));
                     break;
                 case 6:
-                    team2.add(new Peasant(team2, getName(), 1, i + 1));
+                    holyTeam.add(new Peasant(holyTeam, getName(), 10, i + 1));
                     break;
             }
         }
+        allTeam.addAll(darkTeam);
+        allTeam.addAll(holyTeam);
+        allTeam.sort(BaseUnit::compareTo);
         Scanner scanner = new Scanner(System.in);
-        while (team1.size() > 0 && team2.size() > 0) {
+        while (true) {
+            View.view();
             scanner.nextLine();
-            System.out.println(team1);
-            System.out.println(team2);
-            team1.forEach(unit -> unit.step(team2));
-            team2.forEach(unit -> unit.step(team1));
+            for (BaseUnit unit : allTeam) {
+                if (holyTeam.contains(unit)) {
+                    unit.step(darkTeam);
+                } else {
+                    unit.step(holyTeam);
+                }
+            }
         }
     }
+//        Scanner scanner = new Scanner(System.in);
+//        while (darkTeam.size() > 0 && holyTeam.size() > 0) {
+//            scanner.nextLine();
+//            System.out.println(darkTeam);
+//            System.out.println(holyTeam);
+//            darkTeam.forEach(unit -> unit.step(holyTeam));
+//            holyTeam.forEach(unit -> unit.step(darkTeam));
+//        }
+
 
     private static String getName() {
         return String.valueOf(Names.values()[new Random().nextInt(Names.values().length)]);

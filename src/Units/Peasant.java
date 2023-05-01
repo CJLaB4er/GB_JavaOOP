@@ -10,6 +10,7 @@ public class Peasant extends BaseUnit {
     @Override
     //Крестьянин ищет союзного стрелка с наименьшим числом стрел и выдаёт ему одну стрелу, иначе просто стоит
     public void step(ArrayList<BaseUnit> enemys) {
+        super.step(enemys);
         Shooter tmp = null;
         for (BaseUnit unit : this.team) { // проходим по списку своих союзников
             if (unit instanceof Archer || unit instanceof Xbowman) { // ищем лучника или арбалетчика
@@ -20,11 +21,11 @@ public class Peasant extends BaseUnit {
             }
         }
         if (tmp == null) {
-            System.out.println("Крестьянин не нашёл в команде стрелка и пропустил ход");
+//            System.out.println("Крестьянин не нашёл в команде стрелка и пропустил ход");
             return;
         }
         tmp.ammunition++;
-        System.out.println(getClass().getSimpleName() + ": " + name + " выдал одну стрелу "
-                + tmp.getClass().getSimpleName() + ": " + tmp.name);
+//        System.out.println(getClass().getSimpleName() + ": " + name + " выдал одну стрелу "
+//                + tmp.getClass().getSimpleName() + ": " + tmp.name);
     }
 }

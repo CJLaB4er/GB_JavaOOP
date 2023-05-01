@@ -13,23 +13,15 @@ public abstract class Shooter extends BaseUnit implements GameInterface {
         this.ammunition = ammunition;
     }
 
-    @Override
-    public String getInfo() {
-        return super.getInfo() + ", запас стрелл: " + ammunition + ", состояние: " + status;
-    }
-
-    @Override
-    public String toString() {
-        return this.getClass().getSimpleName();
-    }
+//    @Override
+//    public String getInfo() {
+//        return super.getInfo() + ", пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ: " + ammunition + ", пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + status;
+//    }
 
     @Override
     public void step(ArrayList<BaseUnit> enemys) {
+        super.step(enemys);
         if (ammunition < 1) {
-            System.out.println("У персонажа закончились стрелы");
-            return;
-        }
-        if (enemys.size() < 1) {
             return;
         }
         BaseUnit target = null;
@@ -45,15 +37,12 @@ public abstract class Shooter extends BaseUnit implements GameInterface {
             return;
         }
         int damage = new Random().nextInt(this.damage[0], this.damage[1]);
-        System.out.println(getClass().getSimpleName()
-                + ": " + name
-                + " Стреляет в "
-                + target.getClass().getSimpleName()
-                + ": " + target.name
-                + " и наносит "
-                + damage + " урона");
         target.getDamage(damage);
         ammunition -= 1;
+    }
 
+    @Override
+    public String toString() {
+        return super.toString() + ", ammo: " + ammunition;
     }
 }

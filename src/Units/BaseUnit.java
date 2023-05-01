@@ -22,22 +22,22 @@ public abstract class BaseUnit implements GameInterface {
         this.damage = damage;
         this.initiative = initiative;
         this.coord = new Coord(x, y);
-        this.status = "ready"; //три возможных статуса: ready, busy, died
+        this.status = "ready"; //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: ready, busy, died
     }
 
     protected void getDamage(int damage) {
         if (this.hp - damage < 1) {
-            this.status = "died"; // статус died означает, что юнит мёртв
+            this.status = "died"; // пїЅпїЅпїЅпїЅпїЅпїЅ died пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
             this.hp = 0;
         } else {
             this.hp = this.hp - damage > this.maxHp ? this.maxHp : this.hp - damage;
         }
 
-    } // метод получения дамага/лечения
+    } // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
     @Override
     public String getInfo() {
-        return this.getClass().getSimpleName() + " " + name + ", текущее здоровье: " + hp;
+        return this.getClass().getSimpleName() + " " + name + ", пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + hp;
     }
 
     public int compareTo(Object o) {
@@ -48,12 +48,19 @@ public abstract class BaseUnit implements GameInterface {
     @Override
     public void step(ArrayList<BaseUnit> enemys) {
         if (status.equals("died")) {
-            System.out.println(getClass().getSimpleName() + ": " + name + " мёртв.");
             return;
         }
     }
     @Override
     public String toString() {
-        return this.getClass().getSimpleName();
+        return this.getClass().getSimpleName() + ": " + name + ", hp: " + hp + ", СЃС‚Р°С‚СѓСЃ: " + status;
+    }
+
+    public int[] getCoords(){
+        return new int[]{coord.x, coord.y};
+    }
+
+    public int getHp() {
+        return hp;
     }
 }
