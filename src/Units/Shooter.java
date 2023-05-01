@@ -1,6 +1,7 @@
 package Units;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class Shooter extends BaseUnit implements GameInterface {
     protected int ammunition;
@@ -14,7 +15,7 @@ public abstract class Shooter extends BaseUnit implements GameInterface {
 
     @Override
     public String getInfo() {
-        return super.getInfo() + ", запас стрелл: " + ammunition;
+        return super.getInfo() + ", запас стрелл: " + ammunition + ", состояние: " + status;
     }
 
     @Override
@@ -26,16 +27,25 @@ public abstract class Shooter extends BaseUnit implements GameInterface {
     public void step(ArrayList<BaseUnit> enemys) {
         BaseUnit target = null;
         float minDist = Float.MAX_VALUE;
-        if (this.ammunition > 0 && this.hp > 0) {
-            for (BaseUnit item : enemys) {
-                float tmp = item.coord.getDistance(this.coord);
-                if (tmp < minDist) {
-                    minDist = tmp;
-                    target = item;
-                }
-            }
-            System.out.println(name + " Стреляет в " + target.name);
-            ammunition -= 1;
+        if (status.equals("died")) {
+            System.out.println("Персонаж мёртв");
+            return;
         }
+        if (ammunition < 1) {
+            System.out.println("У персонажа закончились стрелы");
+            return;
+        }
+        for (BaseUnit item : enemys) {
+            float tmp = item.coord.getDistance(this.coord);
+            if (tmp < minDist) {
+                minDist = tmp;
+                target = item;
+            }
+        }
+        int damage = new Random().nextInt(this.damage[0], this.damage[1]);
+        System.out.println(name + " Стреляет в " + target.name + " и наносит " + damage + " урона");
+        target.getDamage(damage);
+        ammunition -= 1;
+
     }
 }

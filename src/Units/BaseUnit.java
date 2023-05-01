@@ -30,13 +30,13 @@ public abstract class BaseUnit implements GameInterface {
             this.status = "died";
             this.hp = 0;
         }
-        this.hp = this.hp - damage > this.maxHp ? this.maxHp : this.hp - damage;
+        else {this.hp = this.hp - damage > this.maxHp ? this.maxHp : this.hp - damage;}
 
     } // метод получения дамага/лечения
 
     @Override
     public String getInfo() {
-        return this.getClass().getSimpleName() + " " + name;
+        return this.getClass().getSimpleName() + " " + name + ", текущее здоровье: " + hp;
     }
 
     public int compareTo(Object o) {

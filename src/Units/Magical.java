@@ -26,4 +26,9 @@ public abstract class Magical extends BaseUnit {
 //        team.get(index_min_hp).getDamage(new Random().nextInt(this.damage[0], this.damage[1]));
         team.get(index_min_hp).getDamage(5);
     }
+
+    @Override
+    public String getInfo() {
+        return super.getInfo() + ", запас маны: " + mana + ", состояние: " + status;
+    }
 }
