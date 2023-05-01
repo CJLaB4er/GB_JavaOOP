@@ -45,10 +45,15 @@ public abstract class Shooter extends BaseUnit implements GameInterface {
             return;
         }
         int damage = new Random().nextInt(this.damage[0], this.damage[1]);
-        System.out.println(getClass().getSimpleName() + ": " + name + " Стреляет в "
-                + target.getClass().getSimpleName() + ": " + target.name + " и наносит " + damage + " урона");
+        System.out.println(getClass().getSimpleName()
+                + ": " + name
+                + " Стреляет в "
+                + target.getClass().getSimpleName()
+                + ": " + target.name
+                + " и наносит "
+                + damage + " урона");
         target.getDamage(damage);
-//        ammunition -= 1;
+        ammunition -= 1;
 
     }
 }

@@ -52,4 +52,8 @@ public abstract class BaseUnit implements GameInterface {
             return;
         }
     }
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
 }

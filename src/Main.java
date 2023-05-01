@@ -2,12 +2,13 @@ import Units.*;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        int teamSize = 3;
+        int teamSize = 5;
 
 
         ArrayList<BaseUnit> team1 = new ArrayList<>();
@@ -58,26 +59,15 @@ public class Main {
                     team2.add(new Thief(team2, getName(), 10, i + 1));
                     break;
                 case 6:
-                    team2.add(new Peasant(team1, getName(), 1, i + 1));
+                    team2.add(new Peasant(team2, getName(), 1, i + 1));
                     break;
             }
         }
-
-//        System.out.println("Спиcок персонажей первой команды: ");
-//        team1.forEach(unit -> System.out.println(unit.getInfo()));
-//        System.out.println("Спиcок персонажей второй команды: ");
-//        team2.forEach(unit -> System.out.println(unit.getInfo()));
-
-//        team1.forEach(unit -> unit.step(team2));
-//        team2.forEach(unit -> unit.step(team1));
-
-//        System.out.println("----------");
-//        System.out.println("Первая команда");
-//        team1.forEach(unit -> System.out.println(unit.getInfo()));
-//        System.out.println("Вторая команда");
-//        team2.forEach(unit -> System.out.println(unit.getInfo()));
-
+        Scanner scanner = new Scanner(System.in);
         while (team1.size() > 0 && team2.size() > 0) {
+            scanner.nextLine();
+            System.out.println(team1);
+            System.out.println(team2);
             team1.forEach(unit -> unit.step(team2));
             team2.forEach(unit -> unit.step(team1));
         }
